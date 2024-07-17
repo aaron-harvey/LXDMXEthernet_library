@@ -277,7 +277,7 @@ uint16_t LXSACN::parse_dmp_layer( uint16_t size ) {
 		       }
         	
 		       // but if haven't heard from source a for three seconds...
-		       if ( abs(millis()-_last_packet_a) > 3000 ) {
+		       if ( (millis()-_last_packet_a) > 3000 ) {
 		           // no more source a
 		           if ( _packet_buffer[SACN_PRIORITY_OFFSET] > _priority_b ) {
 		               // this packet takes over as source a if it has a higher priority than b
@@ -323,7 +323,7 @@ uint16_t LXSACN::parse_dmp_layer( uint16_t size ) {
 		       
 		       // if b exists and is expired, erase it
 			   if ( _dmx_slots_b ) {
-				   if ( abs(millis()-_last_packet_b) > 3000 ) {
+				   if ( (millis()-_last_packet_b) > 3000 ) {
 					  clearDMXSourceB();
 				   }
 			   }
@@ -431,7 +431,8 @@ void LXSACN::clearDMXOutput ( void ) {
     _dmx_slots_b = 0;
     _priority_a = 0;
     _priority_b = 0;
-    _last_packet_a = 0;
+    _last_packet_a = 0L;
+    _last_packet_b = 0L;
 }
 
 void LXSACN::clearDMXSourceB( void ) {

@@ -201,9 +201,9 @@ void clearDMXOutput ( void );
 /// priority of second sender (only equal to primary, less is ignored, higher becomes primary)	  	
   	uint8_t   _priority_b;
 /// timestamp of last packet received from primary sender 	
-  	long      _last_packet_a;
+  	u_long      _last_packet_a;
 /// timestamp of last packet received from second sender 
-  	long      _last_packet_b;
+  	u_long      _last_packet_b;
 
 /*!
 * @brief checks the buffer for the sACN header and root layer size
